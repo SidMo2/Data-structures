@@ -1,0 +1,12 @@
+bool search(node* head, int key){
+    node* temp=head;
+    if(head==NULL)
+        return false;
+    while(temp->next!=NULL){
+        if(temp->data==key){
+            return true;
+        }
+        temp=temp->next;
+    }
+    return false;
+}
