@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+#include <vector>
+using namespace std;
+
+int bsr(vector<int> &nums,int low,int high,int target){
+    int res=INT_MIN;
+    int mid=low+(high-low)/2;
+    if(low<=high){
+        if(nums[mid]==target){
+            return mid;
+        }
+        else if(target<nums[mid]){
+            res=mid;
+            high=mid-1;
+        }
+        else{
+            low=mid+1;
+        }
+    }
+}
+
+int main() {
+	// your code goes here
+	vector<int> nums={1,2,3,4,8,10,10,12,19};
+	int target=5;
+	int low=0,high=nums.size()-1;
+	int ans = bsr(nums,low,high,target);
+	cout<<ans;
+	return 0;
+}
