@@ -1,0 +1,28 @@
+int bsr(vector<int> &arr,int low,int high,int target){
+    int k=0;
+    if(low<=high){
+        int mid=(low+high)/2;
+        if(arr[mid]==target){
+            return mid;
+        }
+        if(arr[mid]>target){
+            return bsr(arr,low,mid-1,target);
+        }
+        else{
+            return bsr(arr,mid+1,high,target);
+        }
+    }
+    return -1;
+}
+
+int main() {
+    std::cout << "Hello World!\n";
+    vector<int> arr={1,2,3,4,5,6,7,8,9};
+    int target=6;
+    int ans;
+    int low=0;
+    int high=arr.size()-1;
+    ans=bsr(arr,low,high,target);
+    cout<<ans;
+    return 0;
+}
