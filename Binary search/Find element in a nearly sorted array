@@ -1,0 +1,27 @@
+int bsr(vector<int> &nums, int low,int high,int target){
+    while(low<=high){
+        int mid=low+(high-low)/2;
+        if(nums[mid]==target){
+            return mid;
+        }
+        else if((mid-1)>=low and nums[mid-1]==target)
+            return mid-1;
+        else if((mid+1)<=high and nums[mid+1]==target)
+            return mid+1;
+        else if(nums[mid]<target)
+            low=mid+1;
+        else
+            high=mid-1;
+    }
+    return -1;
+}
+
+int main() {
+    std::cout << "Hello World!\n";
+    vector<int> nums={1,2,4,3,6,5};
+    int target=6;
+    int low=0,high=nums.size()-1;
+    int ans=bsr(nums,low,high,target);
+    cout<<ans;
+    return 0;
+}
