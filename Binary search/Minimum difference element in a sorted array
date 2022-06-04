@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+#include <vector>
+using namespace std;
+
+int min_diff(vector<int> &nums, int low,int high,int target){
+    int ans=-1;
+    if(low<high){
+        int mid=low+(high-low)/2;
+        if(nums[mid]==target){
+            return target-nums[mid];
+        }
+        else if(target<nums[mid]){
+            high=mid-1;
+        }
+        else{
+            low=mid+1;
+        }
+    }
+    if(abs(target-nums[low])>abs(target-nums[high])){
+        ans=nums[high];
+    }
+    else{
+        ans=nums[low];
+    }
+    return ans;
+}
+
+int main() {
+	// your code goes here
+	vector<int> nums={2,4,6,7,9,10,12,15,18};
+	int target=14,ans;
+	int low=0,high=nums.size()-1;
+    ans=min_diff(nums,low,high,target);
+	cout<<ans;
+	return 0;
+}
