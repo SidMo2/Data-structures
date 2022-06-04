@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+#include <vector>
+using namespace std;
+
+int findPos(vector<int>&nums, int target){
+    int val=nums[0];
+    int low=0,high=1;
+	while(val<target){
+        low=high;
+        high*=2;
+        val=nums[high];
+	}
+   return high; 
+}
+
+int bsr(vector<int> &nums, int low,int high,int target){
+    int mid=low+(high-low)/2;
+    if(nums[mid]==target){
+        return mid;
+    }
+    else if(target<nums[mid]){
+        return bsr(nums,low,mid-1,target);
+    }
+    else{
+        return bsr(nums,mid+1,high,target);
+    }
+    return -1;
+}
+
+int main() {
+	// your code goes here
+	vector<int> nums={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22};
+	int low=0,high=1,target=7,ans=-1;
+	high=findPos(nums,target);
+	ans=bsr(nums,low,high,target);
+	cout<<ans;
+	return 0;
+}
