@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+#include <vector>
+using namespace std;
+
+int main() {
+	// your code goes here
+	vector<int> nums={4,1,1,1,2,3,5};
+	int k=5;
+	int mx=INT_MIN;
+	int i=0,j=0;
+	int sum=0;
+	while(j<nums.size()){
+	    sum+=nums[j];
+	    if(sum<k){
+	        j++;
+	    }
+	    if(sum==k){
+	        mx=max(mx,(j-i+1));
+	        j++;
+	    }
+	    if(sum>k){
+	        while(sum>k){
+	            sum-=nums[i];
+	            i++;
+	        }
+	        j++;
+	    }
+	}
+	cout<<mx;
+	return 0;
+}
