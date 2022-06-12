@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+#include <vector>
+#include <list>
+using namespace std;
+
+int main() {
+	// your code goes here
+	vector<int> nums={-1,3,5,-3,7,-8,9,-10};
+	list<int> negs;
+	vector<int> ans;
+	int i=0,j=0;
+	int k=3;
+	while(j<nums.size()){
+	    if(nums[j]<0){
+	        negs.push_back(nums[j]);
+	    }
+	    if(j-i+1<k){
+	        j++;
+	    }
+	    else if(j-i+1==k){
+	        ans.push_back(negs.front());
+	        if(negs.front()==nums[i]){
+	            negs.pop_front();
+	        }
+	        i++;
+	        j++;
+	    }
+	}
+	for(int m=0;m<ans.size();m++){
+	    cout<<ans[m]<<" ";
+	}
+	return 0;
+}
