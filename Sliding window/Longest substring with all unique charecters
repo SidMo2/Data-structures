@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+#include <string>
+#include <map>
+using namespace std;
+
+int main() {
+	// your code goes here
+	string s="pwwkew";
+	int ans=INT_MIN;
+	int i=0,j=0;
+	map<char,int> countmap;
+	while(j<s.size()){
+	    if(countmap.find(s[j])==countmap.end()){
+	        countmap.insert(pair<char,int>(s[j],1));
+	    }
+	    else{
+	        countmap[s[j]]++;
+	    }
+	    if(countmap.size()<(j-i+1)){
+	        while(countmap.size()<(j-i+1)){
+	            countmap[s[i]]--;
+	            if(countmap[s[i]]==0){
+	                countmap.erase(s[i]);
+	            }
+	            i++;
+	        }
+	        j++;
+	    }
+	    if(countmap.size()==(j-i+1)){
+	        ans=max(ans,(j-i+1));
+	    }
+	}
+	cout<<ans;
+	return 0;
+}
