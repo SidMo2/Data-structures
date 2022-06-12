@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+#include <vector>
+#include <list>
+using namespace std;
+
+int main() {
+	// your code goes here
+	vector<int> nums={1,3,-1,-3,5,3,6,7};
+	vector<int> ans;
+	list<int> max_ele;
+	int k=3;
+	int i=0,j=0;
+	while(j<nums.size()){
+        while(max_ele.size()>0 && max_ele.back()<nums[j]){
+            max_ele.pop_back();
+        }
+        max_ele.push_back(nums[j]);
+        if(j-i+1<k){
+            j++;
+        }
+        else if(j-i+1==k){
+            ans.push_back(max_ele.front());
+            if(max_ele.front()==nums[i]){
+                max_ele.pop_front();
+            }
+            i++;
+            j++;
+        }
+	}
+	for(int m=0;m<ans.size();m++){
+	    cout<<ans[m]<<" ";
+	}
+	return 0;
+}
