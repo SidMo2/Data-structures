@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+#include <stack>
+using namespace std;
+
+void solve(stack<int> st, int k){
+    if(k==1){
+        st.pop();
+        return;
+    }
+    int val=st.pop();
+    solve(st,k-1);
+    st.push(val);
+}
+
+int main() {
+	// your code goes here
+	stack<int> st;
+	int arr[]={1,2,3,4,5};
+	for(int i=0;i<5;i++){
+	    st.push(arr[i]);
+	}
+	int k=arr.size()/2 +1;
+	solve(st,k);
+	return 0;
+}
