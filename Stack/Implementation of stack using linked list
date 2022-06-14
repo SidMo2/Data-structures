@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Node{
+    public:
+    int data;
+    struct Node* next;
+};
+
+class Stack{
+    Node* head;
+    int size;
+    public:
+    Stack(){
+        head=nullptr;
+        size=0;
+    }
+    void push(int n){
+        Node* temp=new Node;
+        temp->data=n;
+        temp->next=head;
+        head=temp;
+        size++;
+        cout<<"pushed";
+    }
+    void peek(){
+        if(head==NULL)
+            return;
+        cout<< head->data;
+    }
+    void pop(){
+        if(head==NULL)
+            return;
+        cout<<head->data;
+        head=head->next;
+        size--;
+        cout<<"popped";
+    }
+};
+
+int main(){
+    Stack st;
+    st.push(1);
+    st.push(2);
+    st.push(3);
+    st.peek();
+    st.pop();
+    st.pop();
+}
