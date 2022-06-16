@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+#include <string>
+#include <vector>
+#include <set>
+using namespace std;
+
+void subset(string input,string output, vector<string> &ans){
+    if(input.length()==0){
+        ans.push_back(output);
+        return;
+    }
+    string o1=output;
+    string o2=output;
+    o2.push_back(input[0]);
+    input.erase(input.begin()+0);
+    subset(input,o1,ans);
+    subset(input,o2,ans);
+    return;
+}
+
+int main() {
+	// your code goes here
+	string input="aab";
+	string output="";
+	vector<string> ans;
+	set<string> uniq;
+	subset(input,output,ans);
+	for(int i=0;i<ans.size();i++){
+	    uniq.insert(ans[i]);
+	}
+    for (auto it = uniq.begin(); it !=uniq.end(); ++it)
+        cout << ' ' << *it;
+	return 0;
+}
