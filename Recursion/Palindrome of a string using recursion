@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+#include <string>
+using namespace std;
+
+void rev(string cpy, string output){
+    if(cpy.size()==0){
+        cout<<output<<endl;
+        return;
+    }
+    char l=cpy[cpy.length()-1];
+    output.push_back(l);
+    cpy.pop_back();
+    rev(cpy,output);
+    return;
+}
+
+int main() {
+	// your code goes here
+	string input="madam";
+	string cpy=input;
+	string output="";
+	rev(cpy,output);
+	return 0;
+}
