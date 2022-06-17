@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+#include <vector>
+using namespace std;
+
+void solve(vector<int> person, int k,int index){
+    if(person.size()==1){
+        cout<<person[0];
+        return;
+    }
+    index=(index+k)%person.size();
+    person.erase(person.begin()+index);
+    solve(person,k,index);
+    return;
+}
+
+int main() {
+	// your code goes here
+	int n=40;
+	vector<int> person;
+	for(int i=1;i<=n;i++){
+	    person.push_back(i);
+	}
+	int k=7;
+	int index=0;
+	k--;
+	solve(person,k,index);
+	return 0;
+}
