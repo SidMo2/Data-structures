@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maxCoins(vector<int>& piles) {
+        sort(piles.begin(),piles.end());
+        int i=0,j=piles.size()-1;
+        long alice=0,me=0,bob=0;
+        while(i<=j-1){
+            alice+=piles[j];
+            me+=piles[j-1];
+            bob+=piles[i];
+            i++;
+            j-=2;
+            cout<<alice<<" "<<me<<" "<<bob<<endl;
+        }
+        return me;
+    }
+};
