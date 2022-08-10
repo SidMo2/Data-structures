@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        stack<char> vals;
+        for(int i=0;i<s.length();i++){
+            if(vals.empty())
+                vals.push(s[i]);
+            else{
+                if(vals.top()==s[i]){
+                    vals.pop();
+                }
+                else
+                    vals.push(s[i]);
+            }
+        }
+        int j=vals.size();
+        string rev_ans="";
+        for(int i=0;i<j;i++){
+            rev_ans+=vals.top();
+            vals.pop();
+        }
+        string ans="";
+        for(int i=rev_ans.size()-1;i>=0;i--){
+            ans+=rev_ans[i];
+        }
+        return ans;
+    }
+};
