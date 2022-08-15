@@ -1,0 +1,78 @@
+--------------Approach 1-----------------
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    
+    int sizeofLL(ListNode* head){
+        int len=0;
+        while(head){
+            len++;
+            head=head->next;
+        }
+        return len;
+    }
+    
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        int len=sizeofLL(head);
+        int rm=len-n-1;
+        ListNode* temp=head;
+        cout<<rm<<" ";
+        if(rm<0){
+            return head->next;
+        }
+        while(rm>0 and temp){
+            temp=temp->next;
+            rm--;
+        }
+        cout<<temp->val<<" "<<rm<<" ";
+        if(temp->next and temp->next->next)
+            temp->next=temp->next->next;
+        else if(temp->next and !temp->next->next)
+            temp->next=nullptr;
+        return head;
+    }
+};
+
+
+
+
+-------------Approach 2---------------------
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* fast=head;
+        ListNode* slow=head;
+        for(int i=0;i<n;i++){
+            fast=fast->next;
+        }
+        if(!fast)
+            return head->next;
+        while(fast->next){
+            fast=fast->next;
+            slow=slow->next;
+        }
+        slow->next=slow->next->next;
+        return head;
+    }
+};
