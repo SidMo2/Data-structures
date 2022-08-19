@@ -1,0 +1,63 @@
+----------O(n^2) approach -----------------
+
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+// Function to return minimum number of jumps to end of array
+
+class Solution{
+  public:
+    int minJumps(int arr[], int n){
+        // Your code here
+        int total_jumps=0;
+        int i=0,max_ind=-1;
+        while(i<n){
+            cout<<i<<" ";
+            int max_jump=-1;
+            for(int j=i;j<=i+arr[i];j++){
+                if(j+arr[j]>max_jump){
+                    max_jump=j+arr[j];
+                    max_ind=j;
+                }
+            }
+            total_jumps++;
+            i=max_ind;
+            if(i==n)
+                break;
+            cout<<i<<endl;
+        }
+        return total_jumps;
+    }
+};
+
+
+//{ Driver Code Starts.
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,i,j;
+        cin>>n;
+        int arr[n];
+        for(int i=0; i<n; i++)
+            cin>>arr[i];
+        Solution obj;
+        cout<<obj.minJumps(arr, n)<<endl;
+    }
+    return 0;
+}
+
+// } Driver Code Ends
+
+
+
+
+
+------------o(n) approach --------------------
+
